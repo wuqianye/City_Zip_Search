@@ -27,13 +27,16 @@ class CitySearch extends React.Component {
                     console.log(error)
                 }
             )
+
+        const count = document.createElement("h2")
+        count.innerText = this.state.zipcodes.length + " matching results found"
+        output.append(count)
         
         this.state.zipcodes.forEach(entry => {
-            const element = document.createElement("h6")
+            const element = document.createElement("p")
             element.innerText = entry
             output.append(element)
         })
-        //console.log(this.state.zipcodes)
 
         e.preventDefault()
     }
@@ -41,16 +44,11 @@ class CitySearch extends React.Component {
     render() {
         return (
             <div>
-                <form>
+                <form id="cityForm">
                     <input id="cityVal" type="text" placeholder="city"></input>
                     <button onClick={this.citySearch} type="submit">Search with City</button>
                 </form>
-                <div id="output">
-                    {/* {console.log(this.state.zipcodes)}
-                    {this.state.zipcodes.forEach(entry => {
-                        return (<h6>{entry}</h6>)
-                    })} */}
-                </div>
+                <div id="output"></div>
             </div>
         )
     }
